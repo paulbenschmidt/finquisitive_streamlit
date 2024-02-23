@@ -4,27 +4,27 @@ import pandas as pd
 import streamlit as st
 
 from helper.page_setup import setup_page
-
+from tools.income_assessment import tool_income_assessment
 
 setup_page()
 
 st.write("""
     # Income as a Vehicle
 
-    *Our success is not the result of making money. Making money is the result of success and success is in direct
+    *"Our success is not the result of making money. Making money is the result of success and success is in direct
     proportion to our service. Most people have this law backwards. They believe that you're successful if you
     earn a lot of money. The truth is that you can only earn money after you're successful. It's like the story
-    of the man who sat in front of the stove and said to it, "Give me heat and then I'll add the wood.* — Earl
+    of the man who sat in front of the stove and said to it, 'Give me heat and then I'll add the wood.'"* — Earl
     Nightingale, *The Strangest Secret in the World*
 
     ## The Enabler of Financial Independence
 
     The next quadrant is income and completes the calculation of savings rate, helping us to determine how much
     we're able to save and invest. While our degree of control over our expenses is much greater, we still
-    have control over our income, especially as we think many years into the future. As author and thinker
-    Cal Newport says, "By aiming to make money, you're aiming to be valuable.” (_So Good They Can't Ignore You_)
+    have control over our income, especially as we think many years into the future.
 
-    ## Working a Job While Pursuing Freedom
+    ## A Posture of Gratefulness
+
     Whether you're self-employed, working for others, or own your own business, sometimes mustering the
     strength to show up to your job day after day can be challenging. However, if we're serious about our
     financial goals, we can take a posture of gratefulness for the work that enables us to work toward
@@ -42,8 +42,9 @@ st.write("""
 
     As was covered in Lesson 4, the time in the middle between the start of the financial independence
     journey and your eventual achievement of the goal, is where the majority of your time will be spent.
-    Because of this, it's worthwhile to spend time planning for the ways in which that time will be spent -
-    namely, in the work that you do.
+    Because of this, it's worthwhile to think about what you want your life in this "middle place" to look like -
+    especially, in the work that you do. Or, to share some wisdom from a friend who decided not to go back to
+    school for another 10 years, "The life you spend working toward a goal is still your life."
 
     The blogger Marc Winn provides a helpful framework for ensuring that the income we earn is both
     sustainable and lucrative. Using a Venn diagram to explain the concept of _ikigai_, a Japanese
@@ -52,7 +53,8 @@ st.write("""
     world needs, and (4) what can be paid for.
 
     If you have the flexibility to experiment with different careers that can nestle you into the
-    intersection of these four areas, it may be worth exploring. However, for those who may not have
+    intersection of these four areas, it may be worth exploring and experimenting with different paths that
+    target the intersection of these four areas. However, for those who may not have
     the flexibility, finding a [good enough job](https://www.amazon.com/Good-Enough-Job-Reclaiming-Life/dp/059353896X)
     may be sufficient for your needs and goals. In an American culture where our job is coupled so closely
     to our identity, it may feel challenging to "settle" for a good enough job, but, if this choice aligns
@@ -65,7 +67,8 @@ st.write("""
     reduce his service. This is the price you must pay for what you want" (_The Strangest Secret in the World_).
     While it is beyond the scope of this course to identify all the different ways that one could
     increase one's income, it's helpful to start with this principle: if you aim to be useful,
-    you will eventually be rewarded.
+    you will eventually be rewarded. Modern author and thinker Cal Newport echoes this idea in writing:
+    "By aiming to make money, you're aiming to be valuable.” (_So Good They Can't Ignore You_)
 
     However, just as it is necessary to determine the expenses and style of living that we can
     reasonably sustain, we should also consider our work-life so as to increase our chances of
@@ -81,18 +84,13 @@ st.write("""
 
     Before ending this lesson, it's important to remember:
     "Your level of income doesn't determine your level of wealth. If you're not building wealth, then you're
-    depleting" (_Wealth Can't Wait_, Osborn). Income can be used toward increasing expenses (buying that new car
+    depleting" (_Wealth Can't Wait_, Osborn). Income can be applied toward increasing expenses (buying that new car
     or upgrading your house) or increasing assets (purchasing stocks or real estate). One gives immediate
     gratification, while the other gives long-term security. If our goal is to achieve financial independence,
     prioritizing moving income into the assets quadrant should always be at the front of our mind. Making
-    six-figures means very little if you need to show up to work in order to get the paycheck; instead,
-    your measure of success should be your savings rate: how much you're able to keep and invest.
+    six-figures means very little if you don't know how to keep it and put it to work; instead,
+    your measure of success should be your savings rate: how much you're able to keep and invest. It is
+    this second number that will let you increase income effortlessly.
 """)
 
-# TODO: Create a word blob that lets people reflect on their work:
-# - Are you happy with your current pace? If not, what would you like to change?
-# (Earning more, working less, learning new skills, traveling or increasing life experience through work, etc.)
-# - What do you love about your work?
-# - What are you good at?
-# - What does the world need?
-# - What can you be paid for?
+tool_income_assessment()

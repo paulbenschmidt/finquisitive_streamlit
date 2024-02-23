@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 
 from helper.page_setup import setup_page
-from tools.spending_assessment import tool_spending_assessment
+from tools.expenses_assessment import tool_expenses_assessment
 
 
 setup_page()
@@ -18,8 +18,8 @@ st.write("""
     ## Learning to Spend Well
 
     In the four quadrants, expenses are where we have the most immediate control; it is the lowest hanging fruit to
-    make immediate action in achieving your goals and the best place to begin. Your expenses, combined with your
-    income, define your savings rate, and your savings rate determines how quickly you'll reach your goal.
+    make immediate action in achieving your goals and the best place to begin. Your expenses (combined with your
+    income) define your savings rate, and your savings rate determines how quickly you'll reach your goal.
 
     In _The Psychology of Money_, Morgan Housel writes: "one of the most powerful ways to increase your savings isn't
     to raise your income. It's to raise your humility." We may have the most control over our expenses, but coming
@@ -28,7 +28,8 @@ st.write("""
     that "this new product will change your life".
 
     But every dollar that we spend on an expense is a dollar that isn't invested, and any dollar that isn't invested
-    won't grow over time. In _The Richest Man in Babylon_, a fictional book full of financial parables, the author
+    won't grow over time to help us or others in the future. In _The Richest Man in Babylon_, a fictional book full
+    of financial parables, the author
     talks about thinking about money as employees who work for you if you let them, investing in ourselves by
     strategically putting our money in places it will grow for us.
 
@@ -46,7 +47,7 @@ st.write("""
     Practically, this looks like going through your expenses and asking yourself questions like:
     - Would I be happy without this?
     - Would I be happier if I had more of this? How much happier?
-    - Am I happy with the amount of spending on this item or category?
+    - Am I satisfied with the amount of spending on this item or category?
 
     It will take some work, but after a while, you can begin to see every purchase through this lens of "satisfizing",
     getting the most joy out of your dollars spent while still being on track to reach future goals. At the beginning
@@ -61,13 +62,25 @@ st.write("""
     calculate the amount that you would need to save each month in order to reach your target on time. This can
     be especially helpful if you're frugal and have a hard time spending money, because you begin by defining your
     goal (without regard to spending) and then work backwards to determine how much you can spend. This approach
-    provides you with mathematical permission to spend the rest with the peace of mind that you're still on track
+    provides you with mathematical permission to spend money with the peace of mind that you're still on track
     to reach your goal.
 
-    Wealth building is a process; it is an endurance race, not a sprint. Because of this, be wary of the
-    temptation to force yourself to live more frugally than you're currently able to. By putting too restrictive
+    Wealth building is a process; it is an endurance race, not a sprint. Because of this, be wary of forcing
+    yourself to live more frugally than you're currently able to. By putting too restrictive
     of a budget, you may end up resorting to spending splurges. Your goal here is to find a sustainable growth
     rate for a life that you can enjoy today, and in the future!
 """)
 
-tool_spending_assessment()
+tool_expenses_assessment()
+
+st.divider()
+
+st.write("""
+    As life changes, our priorities and values change with it. This is healthy and natural, but it
+    also means that reevaluating our expenses (both the amount and the distribution of that spending)
+    is an ongoing process.
+
+    While this lecture focused on the importance of honoring our present selves by spending money on things
+    that bring us joy, in the next lecture, we'll look at the other side of the coin: the importance of
+    viewing income as a tool to help us reach our future goals.
+""")

@@ -12,6 +12,7 @@ st.write("# Welcome to FinQuisitive! 👋")
 # TODO: Create authentication (to capture email)
 # TODO: Create donation page
 
+# TODO: WRite about how this tool is a combo of book + chart, meant to teach financial principles in an interactive way
 st.markdown("""
     FinQuisitive is a financial literacy application designed to interactively teach financial principles.
 """)

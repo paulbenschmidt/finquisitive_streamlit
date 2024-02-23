@@ -4,6 +4,7 @@ import pandas as pd
 import streamlit as st
 
 from helper.page_setup import setup_page
+from tools.debt_assessment import tool_debt_assessment
 
 
 setup_page()
@@ -18,15 +19,15 @@ st.write("""
 
     Many people have different perspectives on debt. Personal finance guru Dave Ramsey is well-known
     for being a staunch advocate against debt:
-    > If you owe any money to anyone for any reason—that's debt. Now that we've got that foundation,
-    > let's talk about what you can do to get debt out of your life. Forever and ever.
+    > *If you owe any money to anyone for any reason—that's debt. Now that we've got that foundation,
+    > let's talk about what you can do to get debt out of your life. Forever and ever.*
     > ([_How to Pay Off Debt_](https://www.ramseysolutions.com/debt/how-to-pay-off-debt))
 
     On the other hand, Robert Kiyosaki, Japanese businessman and author of _Rich Dad, Poor Dad_, doesn't
     shy away from it:
-    > Interviewer: "In one of your YouTube videos, you actually said that you're currently \$600 million in debt."
+    > *Interviewer: "In one of your YouTube videos, you actually said that you're currently \$600 million in debt."*
     >
-    > Kiyosaki: (Shakes head and waits) "$1.2 billion."
+    > *Kiyosaki: (Shakes head and waits) "$1.2 billion."*
     >
     > ([YouTube](https://www.youtube.com/watch?v=5pa-BWa4Ntc&ab_channel=djvlad))
 
@@ -57,7 +58,7 @@ st.write("""
     Bad debt is used to purchase things that decrease in value; good debt is used to
     purchase things that increase in value.
 
-    As we covered in the Expenses quadrant, the United States is a culture of consumerism.
+    As we covered in the Expenses quadrant, the United States has a culture of consumerism.
     It provides a financial system that makes it possible to use debt to make "bad debt"
     purchases in the form of credit cards, car loans, and even home mortgages. In some situations,
     this can be beneficial if you need but can't afford groceries for the week, paying the full
@@ -65,11 +66,4 @@ st.write("""
     of letting short-term, urgent needs become long-term habits and patterns.
 """)
 
-# TODO: Create tool to analyze debt:
-# Debt Name, Debt Amount, Interest Rate, Income Earned from Debt, Appreciation Earned from Debt, Net Annual Cost, Good/Bad Debt
-
-# TODO: Add section below to introduction of tool
-    # As part of this lesson, we're going to take a deep dive into our debts and analyze
-    # each one to determine the best path forward to reaching our financial independence.
-    # Every debt that we're able to get rid of is additional savings that can be re-directed
-    # from paying off debts to purchasing assets, letting us get to our financial goal even sooner!
+tool_debt_assessment()

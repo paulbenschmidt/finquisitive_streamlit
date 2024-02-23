@@ -86,10 +86,9 @@ st.write("""
 
 key = "your_goal_text_area"
 if key not in st.session_state:
-    st.session_state['your_goal_text_area'] = ""
+    st.session_state[key] = ""
 st.session_state[key] = st.text_area(
-    "If money wasn't an issue, what would your life look like?"
-    , value=st.session_state['your_goal_text_area']
+    "If money wasn't an issue, what would your life look like?", value=st.session_state[key]
 )
 
 ### TODO (optional): Do we want to include this section?
