@@ -4,6 +4,7 @@ import streamlit as st
 from helper.page_setup import setup_page
 from tools.financial_position_comparison import tool_financial_position_comparison
 
+# TODO: Review all pages to make sure that formatting is good!
 
 setup_page()
 

@@ -7,10 +7,22 @@ def tool_financial_growth_calculations():
     st.markdown("# Growth Calculation")
 
     with st.expander("Inputs", expanded=True) as inputs:
-        age = st.number_input("Enter your age:", value=18, placeholder="Age")
-        current_net_worth = st.number_input("Enter your current net worth:", value=0, placeholder="Current Net Worth")
-        retirement_net_worth = st.number_input("Enter your target retirement net worth:", value=1000000, placeholder="Retirement Net Worth")
-        monthly_investment = st.number_input("Enter your monthly investment contribution amount:", value=200, placeholder="Investment Contribution")
+        age = st.number_input(
+            "Enter your age:",
+            value=18,
+        )
+        current_net_worth = st.number_input(
+            "Enter your current net worth:",
+            value=0,
+        )
+        retirement_net_worth = st.number_input(
+            "Enter your target retirement net worth:",
+            value=1000000,
+        )
+        monthly_investment = st.number_input(
+            "Enter your monthly investment contribution amount (income - expenses):",
+            value=200,
+        )
         roi = st.number_input("Enter your estimated ROI:", value=0.07, placeholder="Estimated ROI")
 
     current_net_worth_no_roi = current_net_worth
