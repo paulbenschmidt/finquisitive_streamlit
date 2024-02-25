@@ -21,5 +21,6 @@ st.markdown("""
     you to make the most of your days in order to live a life of abundance, for yourself and those around you.
 
     With love and gratitude,
+
     The FinQuisitive Team
 """)
