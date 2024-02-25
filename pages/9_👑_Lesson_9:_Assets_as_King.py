@@ -4,6 +4,7 @@ import pandas as pd
 import streamlit as st
 
 from helper.page_setup import setup_page
+from tools.asset_assessment import tool_asset_assessment
 
 
 setup_page()
@@ -57,22 +58,22 @@ st.write("""
     part; however, if you're not interested in this, there are plenty of strategies, such as
     stock market index funds, that allow you to still earn well above the inflation rate.
 
-    > I think mutual funds are an absolutely outstanding way to invest. I believe that every
+    > *I think mutual funds are an absolutely outstanding way to invest. I believe that every
     > person should own their own home, own real estate, and have an individual stock account
     > or own mutual funds. Those are the only ways you can make any substantial income above
-    > your salary. (_Market Wizards_, Schwager)
+    > your salary.* (_Market Wizards_, Schwager)
 
     ## Risk
 
     This brings us to our next point: risk. It can be scary to think about saving all of
     your money and then risk losing it by investing in something that decreases in value or crashes altogether.
-    However, since inflation is **guaranteed** in the United States, money that is not earning
-    interest is **guaranteed** to decrease in value. Which would you rather have: a guaranteed
+    However, since inflation is **guaranteed** in the United States, money that is not invested and
+    growing is **guaranteed** to decrease in value. Which would you rather have: a guaranteed
     loss or a potential loss?
 
-    > The person who takes no chances, generally has to take whatever is left when others are
+    > *The person who takes no chances, generally has to take whatever is left when others are
     > through choosing. Over-caution is as bad as under-caution. Both are extremes to be
-    > guarded against. Life itself is filled with the element of chance. (_Think and Grow Rich_, Napoleon Hill)
+    > guarded against. Life itself is filled with the element of chance.* (_Think and Grow Rich_, Napoleon Hill)
 
     American investor and philanthropist Jack Bogle was stumped by this very problem when
     he created index funds in 1976. While failing to create a strategy that would consistently
@@ -84,13 +85,13 @@ st.write("""
     index fund is a great way to benefit from that growth!
 
     If you're still unconvinced, listen to what Morgan Housel says in _Same As Ever_:
-    > Real GDP per capita increased eightfold in the last hundred years. America of the 1920s
+    > *Real GDP per capita increased eightfold in the last hundred years. America of the 1920s
     > had the same real per-capita GDP as Turkmenistan does today. Our growth over the last
     > century has been unbelievable. But GDP growth averages about 3 percent per year, which is
     > easy to ignore in any given year, decade, or lifetime. Americans over age fifty have seen
     > real GDP per person at least double since they were born. But people don't remember the
     > world when they were born. They remember the last few months, when progress is always
-    > invisible.
+    > invisible.*
 
     ## Staying in the Game
 
@@ -116,12 +117,12 @@ st.write("""
     risk is the tricky part. For those who want to be wealthy, this is where the art and
     practice of investing takes place. In the words of Gary Keller:
 
-    > Investors are defined by their expectation for financial gain and the process they
+    > *Investors are defined by their expectation for financial gain and the process they
     > follow to minimize financial risk. They make it their practice to study and know
     > market value, and then they go out to find assets priced below that value. They
     > don't count on appreciation to bail them out; they make their money going in. Like
     > a bargain hunter, they find as much joy in the search for a bargain as in the
-    > transaction itself. (_The Millionaire Real Estate Investor_, Keller)
+    > transaction itself.* (_The Millionaire Real Estate Investor_, Keller)
 
     The work involved to do this well won't appeal to most, and may not even appeal to you: that's
     ok! It's easy to see the wealthy like Warren Buffett and wish we had what they had,
@@ -130,13 +131,10 @@ st.write("""
     to enjoy the many other wonders in life, it's easier to be satisfied with smaller returns
     that require less effort.
 
-    ## Conclusion
-
     This quadrant is the trickiest to master and requires the most work to do well. If you
     have the desire and persistence, you can shorten the time it takes to reach your goal
     by identifying investments. To see some examples, let's look at some examples of
     compounding comparisons.
 """)
 
-### TODO: Create tool to analyze assets:
-# inputs - savings rates, ROI, starting point, target
+tool_asset_assessment()
