@@ -30,7 +30,7 @@ def tool_asset_assessment():
         )
 
     age = current_age
-    data = [[age, net_worth, net_worth, net_worth, net_worth, net_worth, net_worth]]
+    data = [[age, net_worth, net_worth, net_worth, net_worth, net_worth, net_worth, net_worth]]
     net_worth_0 = net_worth
     net_worth_5 = net_worth
     net_worth_10 = net_worth

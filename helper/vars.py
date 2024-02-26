@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 
-# TODO: Add `help` to the column_config for all data editor columns
 
 def assets_data_editor(detailed=False):
     if detailed:
@@ -34,6 +33,7 @@ def assets_data_editor(detailed=False):
             width="large",
         ),
         "Amount": st.column_config.NumberColumn(
+            help="The amount/worth of each asset",
             format="$%d",
             default=0,
             required=True,
@@ -85,6 +85,7 @@ def expenses_data_editor(detailed=False):
                 width="large",
             ),
             "Amount": st.column_config.NumberColumn(
+                help="The amount of each expense",
                 format="$%d",
                 default=0,
                 required=True,
@@ -113,6 +114,7 @@ def income_data_editor():
                 width="large",
             ),
             "Amount": st.column_config.NumberColumn(
+                help="The monthly amount earned from each income source",
                 format="$%d",
                 default=0,
                 required=True,
@@ -151,6 +153,7 @@ def liabilities_data_editor(detailed=False):
             width="medium" if detailed else "large",
         ),
         "Amount": st.column_config.NumberColumn(
+            help="The amount of each debt",
             format="$%d",
             default=0,
             required=True,
@@ -161,12 +164,14 @@ def liabilities_data_editor(detailed=False):
         data.extend([0.04, 0])
         columns.extend(["Interest Rate", "Monthly Payment"])
         column_config["Interest Rate"] = st.column_config.NumberColumn(
+            help="The annual interest rate of each debt",
             format="%.2f",
             default=0,
             required=True,
             width="medium",
         )
         column_config["Monthly Payment"] = st.column_config.NumberColumn(
+            help="The monthly payment of each debt",
             format="$%d",
             default=0,
             required=True,

@@ -56,8 +56,9 @@ st.write("""
     in decreasing the duration of time between the two points (i.e. retiring earlier than the average person), it is
     essential to identify the slope that is sustainable for our case.
 
-    This last situation is what we want to avoid: a short timeline with little margin for error (because age doesn't
-    stop). The more aggressive the slope is, the more difficult it is to achieve. In terms of increasing net worth,
+    This last situation - of being older with a lower net worth - is what we want to avoid: a short timeline with
+    little margin for error (because we aren't getting any younger). The more aggressive the slope is,
+    the more difficult it is to achieve. In terms of increasing net worth,
     there are only two major levers to play with: saving more or getting a higher return on investment. And we have a
     little more control over the former than the latter.
 
