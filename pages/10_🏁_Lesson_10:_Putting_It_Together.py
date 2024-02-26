@@ -11,9 +11,9 @@ setup_page()
 st.write(f"""
     # Putting It Together
 
-    _Most of our failures are in races for which others enter us. Most of our successes come from
+    _"Most of our failures are in races for which others enter us. Most of our successes come from
     races we ourselves want to enter. We fail to win most races because we enter too many of the
-    wrong ones: their races, not ours._ Richard Koch in _The 80-20 Principle_
+    wrong ones: their races, not ours."_ Richard Koch in _The 80-20 Principle_
 
     ## What Is Your Race?
 
@@ -39,7 +39,7 @@ st.write(f"""
     _The Psychology of Money_, Morgan Housel writes, "It should surprise no one that many
     of us are bad at saving and investing for retirement. We're not crazy. We're all just newbies."
     The 401(k) was created {CURRENT_YEAR - 1978} years ago; the Roth IRA was created
-    {CURRENT_YEAR - 1998} years ago.
+    {CURRENT_YEAR - 1998} years ago. We haven't had very much practice!
 
     Whether it's spending too much in a month or making a bad investment that results in
     losses, know that as long as you continue learning and growing, you _will_ come out
