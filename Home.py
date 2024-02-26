@@ -19,7 +19,14 @@ st.markdown("""
     FinQuisitive can fill that gap. And we hope that having a framework to think about your future will help
     inspire creative ways of living today that will lead to a life of abundance for yourself and those around you!
 
+    To get started, click the first lesson below or use the sidebar on the left to navigate to a specific lesson:
+""")
+
+st.page_link("pages/1_🐣_Lesson_1:_Where_Am_I_Now.py" , label="Lesson 1: Where Am I Now?", icon="🐣")
+
+st.write("""
     With love and gratitude,
 
     The FinQuisitive Team
 """)
+

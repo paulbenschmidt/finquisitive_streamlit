@@ -5,7 +5,6 @@ from helper.vars import assets_data_editor, expenses_data_editor, income_data_ed
 
 
 def tool_expenses_assessment():
-    # TODO: Finish this tool
     st.markdown("# Expenses Assessments")
 
     st.write("""

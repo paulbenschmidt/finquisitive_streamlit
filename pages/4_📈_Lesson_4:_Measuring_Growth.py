@@ -67,25 +67,3 @@ st.write("""
 
 
 tool_financial_growth_calculations()
-
-### TODO: Complete this section!!
-
-#     Because our slope is primarily driven by our savings velocity and our savings velocity is a combination of our
-#     income and level of spending.
-
-# # #### Sustainability
-# # #### Example
-# # To expand on this a little more, and to use our handy-dandy net worth spreadsheet, we can achieve this in four separate ways:
-# # 1. Appreciating assets
-# # 2. Increasing income (in order to increase our contributions)
-# # 3. Decreasing expenses (whether through tax strategies or cutting unnecessary expenses)
-# # 4. Loan amortization, or paydown
-
-# # Ever major expense greater than $1,000 should be analyzed according to these three categories. For example, if we had an average income, with average assets, and an average savings rate, let's see how a few common large ticket items would impact our position:
-# # 1. Choosing to go to college or graduate school
-# # 2. Buying a new car
-# # 3. Buying a used car
-# # 4. Renting a new apartment
-# # 5. Buying a new house
-# # 6. Starting a family
-# # 7. Buying a rental property

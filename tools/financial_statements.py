@@ -246,6 +246,3 @@ def write_milestone(milestones, ix):
             {ix + 1}. {milestones["Milestone"].iloc[ix]} In **{milestones["Years to Milestone"].iloc[ix]} years
             ({milestones["Year"].iloc[ix]})** when net worth is **${int(milestones["Asset Amount"].iloc[ix]):,}**.
         """)
-
-
-### TODO: Distribute profit across asset according to distribution
