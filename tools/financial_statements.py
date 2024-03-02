@@ -5,36 +5,97 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-from helper.vars import assets_data_editor, expenses_data_editor, income_data_editor, liabilities_data_editor
 from tools.financial_independence_levels import calculate_amortization_amount
+
 
 YEARS_TO_FORECAST = 30
 
 def tool_financial_statements():
     st.markdown("# Financial Statements")
 
-    with st.expander("Monthly Income"):
-        income = income_data_editor()
-
-    with st.expander("Monthly Expenses"):
-        expenses = expenses_data_editor(detailed=True)
-
-    with st.expander("Current Assets"):
-        assets = assets_data_editor(detailed=True)
-
-    with st.expander("Current Liabilities"):
-        liabilities = liabilities_data_editor(detailed=True)
-
-        liabilities["Periods"] = liabilities.apply(
-            lambda row: calculate_periods_for_loan(
-                principal=row["Amount"],
-                apr=row["Interest Rate"],
-                monthly_payment=row["Monthly Payment"]
-            ),
-            axis=1
+    with st.expander("**Income**"):
+        active_income = st.number_input(
+            "Total annual active income:",
+            value=60000,
+            format="%i", # format as integer
+            help="Enter your total annual active income across all sources (salary, contract work, etc.)"
         )
+        passive_income = st.number_input(
+            "Total annual passive income:",
+            value=0,
+            format="%i", # format as integer
+            help="Enter your total annual passive income across all sources (dividends, rental income, etc.)"
+        )
+        income = active_income + passive_income
+        st.write(f"Total annual income: **${income:,}**")
 
-    if income['Amount'].sum() > 0 and expenses['Amount'].sum() > 0:
+    with st.expander("**Expenses**"):
+        expenses_options = ["Education", "Entertainment", "Family", "Fitness", "Food", "Gifts", "Housing",
+                            "Other", "Personal Care", "Pets", "Shopping", "Travel"]
+        expenses_selections = st.multiselect(
+            "Select any expense categories that you want to include:",
+            expenses_options,
+            []
+        )
+        expenses = 0
+        for option in expenses_options:
+            if option in expenses_selections:
+                amount = st.number_input(
+                    label=f"{option} expenses:",
+                    value=0,
+                    format="%i", # format as integer
+                )
+                expenses += amount
+        st.write(f"Total monthly expenses: **${expenses:,}**")
+
+    with st.expander("**Assets**"):
+        assets_options = ["Checking", "Savings", "Stocks", "Bonds", "Real Estate", "Retirement Accounts", "Other"]
+        assets_selections = st.multiselect(
+            "Select any asset categories that you want to total:",
+            assets_options,
+            []
+        )
+        assets = 0
+        for option in assets_options:
+            if option in assets_selections:
+                col1, col2 = st.columns(2)
+                with col1:
+                    amount = st.number_input(
+                        label=f"{option}:",
+                        value=0,
+                        format="%i", # format as integer
+                    )
+                with col2:
+                    ## PICK UP HERE: Add ROI to the assets, revise calculations below, make debt inputs non-table
+                    roi = st.number_input(
+                        label=f"{option} ROI:",
+                        help="The expected annual return-on-investment (ROI) of the asset",
+                        value=0,
+                        format="%i", # format as integer
+                    )
+                assets += amount
+                st.divider()
+        st.write(f"Total asset amount: **${assets:,}**")
+
+    with st.expander("**Liabilities**"):
+        liabilities_options = ["Mortgage Debt", "Car Loans", "Credit Card", "School Loans", "Medical Debt", "Other"]
+        liabilities_selections = st.multiselect(
+            "Select any liability categories that you want to total:",
+            assets_options,
+            []
+        )
+        liabilities = 0
+        for option in liabilities_options:
+            if option in liabilities_selections:
+                amount = st.number_input(
+                    label=f"{option}:",
+                    value=0,
+                    format="%i", # format as integer
+                )
+                liabilities += amount
+        st.write(f"Total asset amount: **${liabilities:,}**")
+
+    if income > 0 and expenses > 0:
 
         with st.container(border=True):
             st.markdown("#### Balance Sheet")

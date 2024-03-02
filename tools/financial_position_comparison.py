@@ -1,25 +1,40 @@
 import pandas as pd
 import streamlit as st
 
-from helper.vars import assets_data_editor, expenses_data_editor, income_data_editor, liabilities_data_editor
-
 
 def tool_financial_position_comparison():
     st.markdown("# Financial Position Comparison")
 
-    age = st.number_input("Enter your age:", value=0, placeholder="Age")
-
-    with st.expander("Monthly Income"):
-        income = income_data_editor()
-
-    with st.expander("Monthly Expenses"):
-        expenses = expenses_data_editor()
-
-    with st.expander("Current Assets"):
-        assets = assets_data_editor()
-
-    with st.expander("Current Liabilities"):
-        liabilities = liabilities_data_editor()
+    age = st.number_input(
+        "Enter your age:",
+        value=0,
+        format="%i", # format as integer
+        help="Enter your age. This will be used to compare against the average financial position for your age group."
+    )
+    income = st.number_input(
+        "Total annual income:",
+        value=60000,
+        format="%i", # format as integer
+        help="Enter your total annual income across all active and passive sources (salary, contract work, rental income, etc.)"
+    )
+    expenses = st.number_input(
+        "Total monthly expenses:",
+        value=5000,
+        format="%i", # format as integer
+        help="Enter your total monthly expenses across all categories (housing, transportation, food, taxes, etc.)"
+    )
+    assets = st.number_input(
+        "Total assets:",
+        value=0,
+        format="%i", # format as integer
+        help="Enter your total assets (cash, investments, stocks, real estate, etc.)"
+    )
+    liabilities = st.number_input(
+        "Total liabilities/debts:",
+        value=0,
+        format="%i", # format as integer
+        help="Enter your total liabilities (mortgage, car loans, student loans, credit card debt, etc.)"
+    )
 
     current_metrics = pd.read_csv("./data/financial_position_comparison_data_2024.csv")
     minimum_age = current_metrics["Age"].min()
@@ -36,18 +51,18 @@ def tool_financial_position_comparison():
         st.markdown("Enter age and additional details to see your financial position comparison.")
 
     else:
-        st.markdown(f"Comparing results to Age {age}")
         net_worth_median = int(current_metrics.loc[current_metrics["Age"] == age]["Net Worth: Values to Use"].values[0])
         income_median = int(current_metrics.loc[current_metrics["Age"] == age]["Income: Values to Use"].values[0])
         expenses_median = int(current_metrics.loc[current_metrics["Age"] == age]["Expenses: Values to Use"].values[0])
 
-        individual_net_worth = assets['Amount'].sum() - liabilities['Amount'].sum()
-        individual_income = income['Amount'].sum() * 12
-        individual_assets = assets['Amount'].sum()
-        individual_expenses = expenses['Amount'].sum() * 12
-        individual_liabilities = liabilities['Amount'].sum()
+        individual_net_worth = assets - liabilities
+        individual_income = income
+        individual_assets = assets
+        individual_expenses = expenses * 12
+        individual_liabilities = liabilities
 
         with st.container(border=True):
+            st.subheader(f"Median Financial Comparison for Age {age}")
             st.metric(
                 "Net Worth", f"${individual_net_worth:,}",
                 f"{(individual_net_worth - net_worth_median) / net_worth_median:.2%} from ${net_worth_median:,}"
@@ -66,20 +81,29 @@ def tool_financial_position_comparison():
             )
             col2.metric("Liabilities", f"${individual_liabilities:,}")
             css='''
+            [data-testid="stHeading"] {
+                width: fit-content;
+                margin: auto;
+            }
+            [data-testid="stHeading"] > div {
+                width: fit-content;
+                margin: auto;
+            }
+            [data-testid="stHeading"] h3 {
+                width: fit-content;
+                margin: auto;
+            }
             [data-testid="stMetric"] {
                 width: fit-content;
                 margin: auto;
             }
-
             [data-testid="stMetric"] > div {
                 width: fit-content;
                 margin: auto;
             }
-
             [data-testid="stMetric"] label {
                 width: fit-content;
                 margin: auto;
             }
             '''
-
         st.markdown(f'<style>{css}</style>',unsafe_allow_html=True)

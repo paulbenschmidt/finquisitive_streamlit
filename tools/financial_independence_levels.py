@@ -7,49 +7,23 @@ FOUR_PERCENT_RULE = 0.04
 def tool_financial_independence_levels():
     st.markdown("# Financial Independence Levels Calculator")
 
-    with st.expander("Basic Needs (Monthly)"):
-        basic_needs = st.data_editor(
-            pd.DataFrame(
-                columns=["Name", "Amount"],
-                data=[["Housing & Utilities", 0], ["Food", 0], ["Transportation", 0], ["Healthcare", 0], ["Insurance", 0], ["Other", 0]]
-            ),
-            column_config={
-                "Name": st.column_config.Column(
-                    label="Name",
-                    width="large",
-                    disabled=True,
-                ),
-                "Amount": st.column_config.NumberColumn(
-                    format="$%d",
-                    default=0,
-                    required=True,
-                    width="medium",
-                )
-            },
-            num_rows="static",
-            hide_index=True,
-        )
+    with st.expander("Basic Monthly Needs"):
+        housing = st.number_input(label="Housing & Utilities", value=1000, step=1)
+        food = st.number_input(label="Food", value=300, step=1)
+        transportation = st.number_input(label="Transportation", value=200, step=1)
+        healthcare = st.number_input(label="Healthcare", value=200, step=1)
+        insurance = st.number_input(label="Insurance", value=100, step=1)
+        other_basic = st.number_input(label="Other", key="other_basic", value=0, step=1)
+        basic_needs = housing + food + transportation + healthcare + insurance + other_basic
 
-    with st.expander("Additional Wants (Monthly)"):
-        additional_wants = st.data_editor(
-            pd.DataFrame(
-                columns=["Name", "Amount"],
-                data=[["Clothing", 0], ["Restaurants", 0], ["Entertainment", 0], ["Travel", 0], ["Gifts", 0]]
-            ),
-            column_config={
-                "Name": st.column_config.TextColumn(
-                    label="Name",
-                    width="large",
-                ),
-                "Amount": st.column_config.NumberColumn(
-                    format="$%d",
-                    default=0,
-                    required=True,
-                    width="medium",
-                )
-            },
-            num_rows="dynamic",
-        )
+    with st.expander("Additional Monthly Wants"):
+        restaurants = st.number_input(label="Restaurants", value=200, step=1)
+        entertainment = st.number_input(label="Entertainment", value=100, step=1)
+        clothing = st.number_input(label="Clothing", value=100, step=1)
+        travel = st.number_input(label="Travel", value=200, step=1)
+        gifts = st.number_input(label="Gifts", value=100, step=1)
+        other_additional = st.number_input(label="Other", key="other_additional", value=0, step=1)
+        additional_wants = restaurants + entertainment + clothing + travel + gifts + other_additional
 
     with st.expander(f"Entry Luxuries"):
         st.write("""
@@ -65,26 +39,17 @@ def tool_financial_independence_levels():
             For help calculating the monthly payments for your specific luxuries, see the expander _Helper:
             Luxury Loan Payment Calculator_ below.
         """)
-        entry_luxuries = st.data_editor(
-            pd.DataFrame(
-                columns=["Name", "Amount"],
-                data=[["Luxury Item #1 (name me)", 0], ["Luxury Item #2 (name me)", 0], ["Monthly Donation", 0]]
-            ),
-            key="entry_luxuries",
-            column_config={
-                "Name": st.column_config.TextColumn(
-                    label="Name",
-                    width="large",
-                ),
-                "Amount": st.column_config.NumberColumn(
-                    format="$%d",
-                    default=0,
-                    required=True,
-                    width="medium",
-                )
-            },
-            num_rows="dynamic",
-        )
+        st.divider()
+        luxury_item_1 = st.text_input(label="Luxury Item #1", value="Luxury Item #1", label_visibility="collapsed")
+        luxury_item_1_amount = st.number_input(label="Monthly Payment", key="luxury_item_1_amount", value=0, step=1)
+        st.divider()
+        luxury_item_2 = st.text_input(label="Luxury Item #2", value="Luxury Item #2", label_visibility="collapsed")
+        luxury_item_2_amount = st.number_input(label="Monthly Payment", key="luxury_item_2_amount", value=0, step=1)
+        st.divider()
+        luxury_item_3 = st.text_input(label="Luxury Item #3", value="Luxury Item #3", label_visibility="collapsed")
+        luxury_item_3_amount = st.number_input(label="Monthly Payment", key="luxury_item_3_amount", value=0, step=1)
+
+        entry_luxuries = luxury_item_1_amount + luxury_item_2_amount + luxury_item_3_amount
 
     with st.expander("High-End Luxuries"):
         st.write("""
@@ -95,26 +60,17 @@ def tool_financial_independence_levels():
             For help calculating the monthly payments for your specific luxuries, see the expander _Helper:
             Luxury Loan Payment Calculator_ below.
         """)
-        high_end_luxuries = st.data_editor(
-            pd.DataFrame(
-                columns=["Name", "Amount"],
-                data=[["", 0]]
-            ),
-            key="high_end_luxuries",
-            column_config={
-                "Name": st.column_config.TextColumn(
-                    label="Name",
-                    width="large",
-                ),
-                "Amount": st.column_config.NumberColumn(
-                    format="$%d",
-                    default=0,
-                    required=True,
-                    width="medium",
-                )
-            },
-            num_rows="dynamic",
-        )
+        st.divider()
+        mega_luxury_item_1 = st.text_input(label="High-End Luxury Item #1", value="High-End Luxury Item #1", label_visibility="collapsed")
+        mega_luxury_item_1_amount = st.number_input(label="Monthly Payment", key="mega_luxury_item_1_amount", value=0, step=1)
+        st.divider()
+        mega_luxury_item_2 = st.text_input(label="High-End Luxury Item #2", value="High-End Luxury Item #2", label_visibility="collapsed")
+        mega_luxury_item_2_amount = st.number_input(label="Monthly Payment", key="mega_luxury_item_2_amount", value=0, step=1)
+        st.divider()
+        mega_luxury_item_3 = st.text_input(label="High-End Luxury Item #3", value="High-End Luxury Item #3", label_visibility="collapsed")
+        mega_luxury_item_3_amount = st.number_input(label="Monthly Payment", key="mega_luxury_item_3_amount", value=0, step=1)
+
+        high_end_luxuries = mega_luxury_item_1_amount + mega_luxury_item_2_amount + mega_luxury_item_3_amount
 
     with st.expander("Helper: Luxury Loan Payment Calculator"):
         st.write("""
@@ -135,21 +91,21 @@ def tool_financial_independence_levels():
             st.markdown("## Levels of Financial Independence")
             col1, col2, col3, col4, col5 = st.columns(5)
             with col1:
-                security_sum = basic_needs["Amount"].sum()
+                security_sum = basic_needs
                 display_financial_level_metric(
                     label = "Financial Security",
-                    metric_sum = security_sum
+                    metric_sum = basic_needs
                 )
                 st.write("All basic needs are covered!")
             with col2:
-                vitality_sum = security_sum + (additional_wants["Amount"].sum() / 2)
+                vitality_sum = security_sum + (additional_wants / 2)
                 display_financial_level_metric(
                     label = "Financial Vitality",
                     metric_sum = vitality_sum
                 )
                 st.write("All basic needs and half of daily desires are covered!")
             with col3:
-                independence_sum = security_sum + additional_wants["Amount"].sum()
+                independence_sum = security_sum + additional_wants
                 display_financial_level_metric(
                     label = "Financial Independence",
                     metric_sum = independence_sum
@@ -157,14 +113,14 @@ def tool_financial_independence_levels():
                 st.write("All basic needs and daily desires are covered!")
             ### TODO: Fix the calculation for the two luxuries!
             with col4:
-                freedom_sum = independence_sum + entry_luxuries["Amount"].sum()
+                freedom_sum = independence_sum + entry_luxuries
                 display_financial_level_metric(
                     label = "Financial Freedom",
                     metric_sum = freedom_sum
                 )
                 st.write("All basic needs and daily desires are covered, plus a few luxuries!")
             with col5:
-                absolute_freedom_sum = freedom_sum + high_end_luxuries["Amount"].sum()
+                absolute_freedom_sum = freedom_sum + high_end_luxuries
                 display_financial_level_metric(
                     label = "Absolute Financial Freedom",
                     metric_sum = absolute_freedom_sum
