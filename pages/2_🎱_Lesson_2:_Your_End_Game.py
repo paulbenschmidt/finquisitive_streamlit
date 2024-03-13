@@ -1,8 +1,6 @@
-import pandas as pd
 import streamlit as st
 
 from helper.page_setup import setup_page
-from tools.financial_position_comparison import tool_financial_position_comparison
 
 
 setup_page()
@@ -90,6 +88,11 @@ if key not in st.session_state:
 st.session_state[key] = st.text_area(
     "If money wasn't an issue, what would your life look like?", value=st.session_state[key]
 )
+
+with st.container(border=True):
+    col1, col2 = st.columns([3,1]) # Cheat to get the page links to be on the right side
+    col1.page_link("pages/1_🐣_Lesson_1:_Where_Are_You_Now.py" , label="Lesson 1: Where Are You Now?", icon="⬅️")
+    col2.page_link("pages/3_💸_Lesson_3:_Sponsoring_Your_Dream.py" , label="Lesson 3: Sponsoring Your Dream", icon="➡️")
 
 ### TODO (optional): Do we want to include this section?
 # st.write("""

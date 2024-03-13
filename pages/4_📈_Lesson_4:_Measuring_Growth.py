@@ -1,10 +1,7 @@
-import altair as alt
-import numpy as np
-import pandas as pd
 import streamlit as st
 
 from helper.page_setup import setup_page
-from helper.visuals import plot_two_net_worth_points
+from helper.visuals import plot_net_worth_trend
 from tools.financial_growth_calculations import tool_financial_growth_calculations
 
 
@@ -22,7 +19,7 @@ st.write("""
     this when plotting on an XY axis:
 """)
 
-plot_two_net_worth_points(data = [[20, 5000], [50, 1000000]])
+plot_net_worth_trend(data = [[20, 5000], [50, 1000000]])
 
 st.write("""
     In mathematics, the slope or gradient of a line is a number that describes both the direction and the steepness
@@ -32,22 +29,22 @@ st.write("""
 st.write(f"""
     - if you're 20 with a lower net worth of \$5,000 and want to retire in 30 years, the slope is very gradual
 """)
-plot_two_net_worth_points(data = [[20, 5000], [50, 1000000]])
+plot_net_worth_trend(data = [[20, 5000], [50, 1000000]])
 
 st.write("""
     - if you're 40 with a high net worth of \$668,333 and want to retire in 10 years, the slope is equally gradual
 """)
-plot_two_net_worth_points(data = [[40, 668333], [50, 1000000]])
+plot_net_worth_trend(data = [[40, 668333], [50, 1000000]])
 
 st.write("""
     - if you're 20 with a net worth of \$5,000 and want to retire in 10 years, the slope is aggressive
 """)
-plot_two_net_worth_points(data = [[20, 5000], [30, 1000000]])
+plot_net_worth_trend(data = [[20, 5000], [30, 1000000]])
 
 st.write("""
     - if you're 40 with a low net worth of $5,000 and want to retire in 10 years, the slope is equally aggressive
 """)
-plot_two_net_worth_points(data = [[40, 5000], [50, 1000000]])
+plot_net_worth_trend(data = [[40, 5000], [50, 1000000]])
 
 st.write("## Sustainability")
 st.write("""
@@ -65,5 +62,9 @@ st.write("""
     To expand on the two major levers, let's revisit our initial net worth sheet:
 """)
 
-
 tool_financial_growth_calculations()
+
+with st.container(border=True):
+    col1, col2 = st.columns([3,1]) # Cheat to get the page links to be on the right side
+    col1.page_link("pages/3_💸_Lesson_3:_Sponsoring_Your_Dream.py" , label="Lesson 3: Sponsoring Your Dream", icon="⬅️")
+    col2.page_link("pages/5_🏦_Lesson_5:_You_Are_a_Business.py" , label="Lesson 5: You Are a Business", icon="➡️")
