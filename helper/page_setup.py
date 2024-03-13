@@ -13,7 +13,7 @@ def setup_page():
     hide_streamlit_style = """
     <style>
     #MainMenu {visibility: hidden;}
-    [data-testid="stMetric"] {visibility: hidden;}
+    [data-testid="stToolbarActions"] {visibility: hidden;}
     </style>
     """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
