@@ -14,6 +14,7 @@ def setup_page():
     <style>
     #MainMenu {visibility: hidden;}
     [data-testid="stToolbarActions"] {visibility: hidden;}
+    #viewerBadge_link__qRIco {visibility: hidden;}
     </style>
     """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
