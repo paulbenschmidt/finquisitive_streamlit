@@ -1,8 +1,6 @@
 import pandas as pd
 import streamlit as st
 
-from helper.vars import assets_data_editor, expenses_data_editor, income_data_editor, liabilities_data_editor
-
 
 def tool_expenses_assessment():
     st.markdown("# Expenses Assessments")

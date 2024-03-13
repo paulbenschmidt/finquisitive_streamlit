@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 
 from helper.page_setup import setup_page
-from tools.asset_assessment import tool_asset_assessment
+from finquisitive_streamlit.archive.asset_assessment import tool_asset_assessment
 
 
 setup_page()

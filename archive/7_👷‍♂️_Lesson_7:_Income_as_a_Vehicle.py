@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 
 from helper.page_setup import setup_page
-from tools.income_assessment import tool_income_assessment
+from finquisitive_streamlit.archive.income_assessment import tool_income_assessment
 
 setup_page()
 
