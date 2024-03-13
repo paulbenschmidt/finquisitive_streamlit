@@ -1,6 +1,7 @@
 import datetime as dt
 
 import streamlit as st
+from streamlit_extras.buy_me_a_coffee import button
 
 from helper.page_setup import setup_page
 
@@ -23,7 +24,7 @@ st.write(f"""
     spend more time on a hobby? This is your decision and is the north star that guides you in your
     financial choices.
 
-    > "But while we can see how much money other people spend on cars, homes, clothes, and vacations,
+    > *But while we can see how much money other people spend on cars, homes, clothes, and vacations,
     > we don't get to see their goals, worries, and aspirations. A young lawyer aiming to be a partner
     > at a prestigious law firm might need to maintain an appearance that I, a writer who can work in
     > sweatpants, have no need for. But when his purchases set my own expectations, I'm wandering down
@@ -31,7 +32,7 @@ st.write(f"""
     > getting. We might not even have different styles. We're just playing a different game.
     > It took me years to figure this out.... few things matter more with money than understanding
     > your own time horizon and not being persuaded by the actions and behaviors of people playing
-    > different games than you are. (Morgan Housel, _The Psychology of Money_)
+    > different games than you are.* (Morgan Housel, _The Psychology of Money_)
 
     Earlier, we talked about growth and the length of our journey in years that it would take
     to reach our financial goal. For some of us, it may only be a few years; for others, it
@@ -57,5 +58,14 @@ st.write(f"""
     debts, the see-saw of risk and return, and the power of time. Wealth is one tool of many
     to make your life the way you want it to be.
 
+    If you feel like you've learned something valuable, consider supporting us by buying us a coffee. It's a small
+    gesture that goes a long way in helping us continue to create content like this.
+
     Thanks for letting us be a small part of your life; we hope to see you around FinQuisitive!
 """)
+
+button(username="finquisitive", floating=False, width=221)
+
+with st.container(border=True):
+    col1, col2 = st.columns([3,1]) # Cheat to get the page links to be on the right side
+    col1.page_link("pages/5_🏦_Lesson_5:_You_Are_a_Business.py" , label="Lesson 5: You Are a Business", icon="⬅️")

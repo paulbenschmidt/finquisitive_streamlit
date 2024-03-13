@@ -1,6 +1,3 @@
-import altair as alt
-import numpy as np
-import pandas as pd
 import streamlit as st
 
 from helper.page_setup import setup_page
@@ -41,8 +38,15 @@ st.write("""
 
 tool_financial_statements()
 
-st.write("""
-    Over the next few lessons, we'll dive into each of the four quadrants: expenses, income, liabilities, and
-    assets. We'll start with expenses, the area where we have the most control and can have the most immediate
-    impact on our financial health.
-""")
+with st.container(border=True):
+    col1, col2 = st.columns([3,1]) # Cheat to get the page links to be on the right side
+    col1.page_link("pages/4_📈_Lesson_4:_Measuring_Growth.py" , label="Lesson 4: Measuring Growth", icon="⬅️")
+    col2.page_link("pages/6_Next_Steps.py" , label="Next Steps", icon="➡️")
+
+
+#  TODO: Write new conclusion
+# st.write("""
+#     Over the next few lessons, we'll dive into each of the four quadrants: expenses, income, liabilities, and
+#     assets. We'll start with expenses, the area where we have the most control and can have the most immediate
+#     impact on our financial health.
+# """)

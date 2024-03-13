@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 
 from helper.page_setup import setup_page
-from tools.expenses_assessment import tool_expenses_assessment
+from finquisitive_streamlit.archive.expenses_assessment import tool_expenses_assessment
 
 
 setup_page()

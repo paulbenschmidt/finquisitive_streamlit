@@ -1,6 +1,8 @@
 import pandas as pd
 import streamlit as st
 
+from utilities.stateful_widgets import stateful_number_input, stateful_text_input
+
 
 FOUR_PERCENT_RULE = 0.04
 
@@ -8,22 +10,34 @@ def tool_financial_independence_levels():
     st.markdown("# Financial Independence Levels Calculator")
 
     with st.expander("Basic Monthly Needs"):
-        housing = st.number_input(label="Housing & Utilities", value=1000, step=1)
-        food = st.number_input(label="Food", value=300, step=1)
-        transportation = st.number_input(label="Transportation", value=200, step=1)
-        healthcare = st.number_input(label="Healthcare", value=200, step=1)
-        insurance = st.number_input(label="Insurance", value=100, step=1)
-        other_basic = st.number_input(label="Other", key="other_basic", value=0, step=1)
-        basic_needs = housing + food + transportation + healthcare + insurance + other_basic
+        prefix = "expenses_basic_amount_for_"
+        for category in ["Housing & Utilities", "Food", "Transportation", "Healthcare", "Insurance", "Other"]:
+            stateful_number_input(
+                key=f"{prefix}{category.lower().replace(' ', '_')}",
+                label=category,
+                help=f"Enter the total monthly expenses for {category}.",
+                format="%i", # format as integer
+                step=25,
+                min_value=0,
+            )
+        expenses_basic = create_expenses_categories_df(prefix=prefix)
+        basic_needs = expenses_basic['amount'].sum()
+        st.write(f"Total basic expenses amount: **${basic_needs:,}**")
 
     with st.expander("Additional Monthly Wants"):
-        restaurants = st.number_input(label="Restaurants", value=200, step=1)
-        entertainment = st.number_input(label="Entertainment", value=100, step=1)
-        clothing = st.number_input(label="Clothing", value=100, step=1)
-        travel = st.number_input(label="Travel", value=200, step=1)
-        gifts = st.number_input(label="Gifts", value=100, step=1)
-        other_additional = st.number_input(label="Other", key="other_additional", value=0, step=1)
-        additional_wants = restaurants + entertainment + clothing + travel + gifts + other_additional
+        prefix = "expenses_additional_amount_for_"
+        for category in ["Restaurants", "Entertainment", "Clothing", "Travel", "Gifts", "Other"]:
+            stateful_number_input(
+                key=f"{prefix}{category.lower().replace(' ', '_')}",
+                label=category,
+                help=f"Enter the total monthly expenses for {category}.",
+                format="%i", # format as integer
+                step=25,
+                min_value=0,
+            )
+        expenses_additional = create_expenses_categories_df(prefix=prefix)
+        additional_wants = expenses_additional['amount'].sum()
+        st.write(f"Total basic expenses amount: **${additional_wants:,}**")
 
     with st.expander(f"Entry Luxuries"):
         st.write("""
@@ -39,17 +53,27 @@ def tool_financial_independence_levels():
             For help calculating the monthly payments for your specific luxuries, see the expander _Helper:
             Luxury Loan Payment Calculator_ below.
         """)
-        st.divider()
-        luxury_item_1 = st.text_input(label="Luxury Item #1", value="Luxury Item #1", label_visibility="collapsed")
-        luxury_item_1_amount = st.number_input(label="Monthly Payment", key="luxury_item_1_amount", value=0, step=1)
-        st.divider()
-        luxury_item_2 = st.text_input(label="Luxury Item #2", value="Luxury Item #2", label_visibility="collapsed")
-        luxury_item_2_amount = st.number_input(label="Monthly Payment", key="luxury_item_2_amount", value=0, step=1)
-        st.divider()
-        luxury_item_3 = st.text_input(label="Luxury Item #3", value="Luxury Item #3", label_visibility="collapsed")
-        luxury_item_3_amount = st.number_input(label="Monthly Payment", key="luxury_item_3_amount", value=0, step=1)
 
-        entry_luxuries = luxury_item_1_amount + luxury_item_2_amount + luxury_item_3_amount
+        prefix = "expenses_entry_luxuries_"
+        for category in ["Luxury #1", "Luxury #2", "Luxury #3"]:
+            st.divider()
+            stateful_text_input(
+                key=f"{prefix}name_for_{category.lower().replace(' ', '_')}",
+                label=category,
+                initial_value=category,
+                label_visibility="collapsed",
+            )
+            stateful_number_input(
+                key=f"{prefix}amount_for_{category.lower().replace(' ', '_')}",
+                label="Monthly Payment",
+                help=f"Enter the total monthly expenses for {category}.",
+                format="%i", # format as integer
+                step=25,
+                min_value=0,
+            )
+        expenses_entry_luxuries = create_expenses_categories_df(prefix=prefix + "amount_for_")
+        entry_luxuries = expenses_entry_luxuries['amount'].sum()
+        st.write(f"Total entry luxuries amount per month: **${entry_luxuries:,}**")
 
     with st.expander("High-End Luxuries"):
         st.write("""
@@ -60,24 +84,39 @@ def tool_financial_independence_levels():
             For help calculating the monthly payments for your specific luxuries, see the expander _Helper:
             Luxury Loan Payment Calculator_ below.
         """)
-        st.divider()
-        mega_luxury_item_1 = st.text_input(label="High-End Luxury Item #1", value="High-End Luxury Item #1", label_visibility="collapsed")
-        mega_luxury_item_1_amount = st.number_input(label="Monthly Payment", key="mega_luxury_item_1_amount", value=0, step=1)
-        st.divider()
-        mega_luxury_item_2 = st.text_input(label="High-End Luxury Item #2", value="High-End Luxury Item #2", label_visibility="collapsed")
-        mega_luxury_item_2_amount = st.number_input(label="Monthly Payment", key="mega_luxury_item_2_amount", value=0, step=1)
-        st.divider()
-        mega_luxury_item_3 = st.text_input(label="High-End Luxury Item #3", value="High-End Luxury Item #3", label_visibility="collapsed")
-        mega_luxury_item_3_amount = st.number_input(label="Monthly Payment", key="mega_luxury_item_3_amount", value=0, step=1)
 
-        high_end_luxuries = mega_luxury_item_1_amount + mega_luxury_item_2_amount + mega_luxury_item_3_amount
+        prefix = "expenses_entry_luxuries_"
+        for category in ["High-End Luxury #1", "High-End Luxury #2", "High-End Luxury #3"]:
+            st.divider()
+            stateful_text_input(
+                key=f"{prefix}name_for_{category.lower().replace(' ', '_')}",
+                label=category,
+                initial_value=category,
+                label_visibility="collapsed",
+            )
+            stateful_number_input(
+                key=f"{prefix}amount_for_{category.lower().replace(' ', '_')}",
+                label="Monthly Payment",
+                help=f"Enter the total monthly expenses for {category}.",
+                format="%i", # format as integer
+                step=25,
+                min_value=0,
+            )
+        expenses_high_end_luxuries = create_expenses_categories_df(prefix=prefix + "amount_for_")
+        high_end_luxuries = expenses_high_end_luxuries['amount'].sum()
+        st.write(f"Total entry luxuries amount per month: **${high_end_luxuries:,}**")
 
     with st.expander("Helper: Luxury Loan Payment Calculator"):
         st.write("""
 
         """)
         calculator_loan_amount = st.number_input(label="Loan Amount", value=50000, step=1)
-        calculator_interest_rate = st.number_input(label="Interest APR (Annual Percentage Rate)", value=0.05, step=0.001)
+        calculator_interest_rate = st.number_input(
+            label="Interest APR (Annual Percentage Rate)",
+            value=0.050,
+            step=0.001,
+            format="%.3f", # format as float
+        )
         calculator_term_in_years = st.number_input(label="Term (Years)", value=5, step=1)
         calculator_term_in_months = calculator_term_in_years * 12
         amortized_loan_payment = calculate_amortization_amount(
@@ -153,12 +192,29 @@ def tool_financial_independence_levels():
 
     st.markdown(f'<style>{css}</style>',unsafe_allow_html=True)
 
+
+def create_expenses_categories_df(prefix):
+    expenses = []
+    for key, value in st.session_state.items():
+        if key.startswith(prefix) and "cache_helper" not in key:
+            expenses.append([
+                key,
+                value,
+            ])
+    expenses = pd.DataFrame(
+        columns=["key", "amount"],
+        data=expenses
+    )
+    return expenses
+
+
 def display_financial_level_metric(label, metric_sum):
     st.metric(
         label=label,
         value=f"${int(metric_sum * 12 / FOUR_PERCENT_RULE):,}",
         delta=f"${int(metric_sum):,} / mo.",
     )
+
 
 def calculate_amortization_amount(principal, apr, periods):
     # https://www.rocketloans.com/learn/financial-smarts/how-to-calculate-monthly-payment-on-a-loan

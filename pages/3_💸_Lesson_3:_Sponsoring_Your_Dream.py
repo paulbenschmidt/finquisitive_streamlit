@@ -1,4 +1,3 @@
-import pandas as pd
 import streamlit as st
 
 from helper.page_setup import setup_page
@@ -67,3 +66,8 @@ st.write("""
     to your lifestyle. Before moving on to the next section, choose one or two of the levels above and keep this
     in the back of your mind as we move forward. We'll be coming back to this in the future!
 """)
+
+with st.container(border=True):
+    col1, col2 = st.columns([3,1]) # Cheat to get the page links to be on the right side
+    col1.page_link("pages/2_🎱_Lesson_2:_Your_End_Game.py" , label="Lesson 2: Your End Game", icon="⬅️")
+    col2.page_link("pages/4_📈_Lesson_4:_Measuring_Growth.py" , label="Lesson 4: Measuring Growth", icon="➡️")
